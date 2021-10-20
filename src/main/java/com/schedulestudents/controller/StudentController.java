@@ -1,23 +1,28 @@
 package com.schedulestudents.controller;
 
-import com.schedulestudents.domain.dbo.StudentEntity;
-import com.schedulestudents.repository.StudentRepository;
+import com.schedulestudents.domain.dto.StudentDto;
+import com.schedulestudents.service.StudentService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
+import java.util.List;
 
 @RestController
+@RequestMapping("/student")
 public class StudentController {
-    private final StudentRepository student;
+    private final StudentService service;
 
-    public StudentController(StudentRepository student) {
-        this.student = student;
+    public StudentController(StudentService service) {
+        this.service = service;
     }
 
-    @GetMapping("/student")
-    public String showStudentList(Map<String, Object> model){
-        StudentEntity studentEntity = new StudentEntity();
-        return "student";
+
+    @GetMapping("/list")
+    public String getAll(Model model){
+        List<StudentDto> students = service.getAll();
+        model.addAttribute("students",students);
+        return "list_students";
     }
 }

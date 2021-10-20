@@ -7,8 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
-
-
 public interface StudentRepository extends Repository<StudentEntity, Integer> {
 
     @Transactional(readOnly = true)
