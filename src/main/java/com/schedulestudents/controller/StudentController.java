@@ -3,9 +3,7 @@ package com.schedulestudents.controller;
 import com.schedulestudents.domain.dto.StudentDto;
 import com.schedulestudents.service.StudentService;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,17 @@ public class StudentController {
         List<StudentDto> students = service.getAll();
         model.addAttribute("students",students);
         return "list_students";
+    }
+
+    @PostMapping("/save")
+    public String saveStudent(@ModelAttribute("students") StudentDto studentDto){
+        service.add(studentDto);
+        return "redirect:/student/list";
+    }
+
+    @DeleteMapping("/delete")
+    public String delete(@RequestParam("id") int id){
+        service.deleteById(id);
+        return "redirect:/student/list";
     }
 }

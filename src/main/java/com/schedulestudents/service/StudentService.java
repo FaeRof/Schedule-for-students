@@ -3,6 +3,7 @@ package com.schedulestudents.service;
 import com.schedulestudents.domain.dto.StudentDto;
 import com.schedulestudents.domain.mapping.StudentMapper;
 import com.schedulestudents.repository.StudentRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,5 +23,14 @@ public class StudentService {
         var student = new ArrayList<StudentDto>();
         studentEntities.forEach(entity -> student.add(mapper.fromDbo(entity)));
         return student;
+    }
+
+    public StudentDto add(StudentDto studentDto){
+        var entity = repository.save(mapper.toDbo(studentDto));
+        return mapper.fromDbo(entity);
+    }
+
+    public void deleteById(int id){
+        repository.deleteById(id);
     }
 }
