@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/students")
 public class StudentController {
+
     private final StudentService service;
 
     public StudentController(StudentService service) {
@@ -22,6 +23,13 @@ public class StudentController {
         List<StudentDto> students = service.getAll();
         model.addAttribute("students",students);
         return "list_students";
+    }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model model){
+        StudentDto studentDto = new StudentDto();
+        model.addAttribute("students", studentDto);
+        return "student_form";
     }
 
     @PostMapping("/save")

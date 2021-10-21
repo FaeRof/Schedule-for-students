@@ -1,7 +1,6 @@
 package com.schedulestudents.domain.dbo;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -9,8 +8,10 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
-@Setter
-@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "student")
 public class StudentEntity
