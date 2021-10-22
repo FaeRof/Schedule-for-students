@@ -11,8 +11,6 @@ import java.util.Collection;
 @Repository
 public interface StudentRepository extends PagingAndSortingRepository<StudentEntity, Integer> {
 
-    @Transactional(readOnly = true)
-    Collection<StudentEntity> findAll() throws DataAccessException;
 
 
     void deleteById(int student);

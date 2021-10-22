@@ -25,9 +25,8 @@ public class StudentService {
         return student;
     }
 
-    public StudentDto add(StudentDto studentDto){
-        var entity = repository.save(mapper.toDbo(studentDto));
-        return mapper.fromDbo(entity);
+    public void add(StudentDto studentDto){
+        repository.save(mapper.toDbo(studentDto));
     }
 
     public void deleteById(int id){
