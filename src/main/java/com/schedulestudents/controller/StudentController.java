@@ -2,6 +2,7 @@ package com.schedulestudents.controller;
 
 import com.schedulestudents.domain.dto.StudentDto;
 import com.schedulestudents.service.StudentService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,12 +26,6 @@ public class StudentController {
         return ResponseEntity.ok(students);
     }
 
-    @GetMapping("/showFormForAdd")
-    public String showFormForAdd(Model model){
-        StudentDto studentDto = new StudentDto();
-        model.addAttribute("students", studentDto);
-        return "student_form";
-    }
 
     @PostMapping("/save")
     public ResponseEntity<StudentDto> saveStudent(@RequestBody StudentDto studentDto){
@@ -38,9 +33,9 @@ public class StudentController {
         return ResponseEntity.ok(studentDto);
     }
 
-    @DeleteMapping("/delete")
-    public String delete(@RequestParam("id") int id){
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") int id){
         service.deleteById(id);
-        return "redirect:/student/list";
+        return ResponseEntity.ok().build();
     }
 }
