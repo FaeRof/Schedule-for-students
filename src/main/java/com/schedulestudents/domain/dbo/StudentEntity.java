@@ -4,8 +4,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Data
@@ -32,7 +30,5 @@ public class StudentEntity
     private String address;
 
     @Column(name = "telephone")
-    @NotEmpty
-    @Digits(fraction = 0, integer = 10)
     private String telephone;
 }

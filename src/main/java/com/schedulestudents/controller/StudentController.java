@@ -2,9 +2,7 @@ package com.schedulestudents.controller;
 
 import com.schedulestudents.domain.dto.StudentDto;
 import com.schedulestudents.service.StudentService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +30,9 @@ public class StudentController {
         service.add(studentDto);
         return ResponseEntity.ok(studentDto);
     }
+
+//    @PutMapping("edit/{id}")
+//    public StudentDto editStudent
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
