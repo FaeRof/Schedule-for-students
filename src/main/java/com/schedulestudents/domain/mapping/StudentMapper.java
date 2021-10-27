@@ -16,18 +16,18 @@ public class StudentMapper {
 
     private final ModelMapper mapper;
 
-    public List<StudentDto> fromListDbo(List<StudentEntity> authorEntityList){
-        return authorEntityList.stream()
+    public List<StudentDto> fromListDbo(List<StudentEntity> studentEntityList){
+        return studentEntityList.stream()
                 .map(this::fromDbo)
                 .collect(Collectors.toList());
     }
 
-    public StudentDto fromDbo(StudentEntity authorEntity){
+    public StudentDto fromDbo(StudentEntity studentEntity){
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
-        return mapper.map(authorEntity, StudentDto.class);
+        return mapper.map(studentEntity, StudentDto.class);
     }
-    public StudentEntity toDbo(StudentDto authorDto){
+    public StudentEntity toDbo(StudentDto studentDto){
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
-        return mapper.map(authorDto, StudentEntity.class);
+        return mapper.map(studentDto, StudentEntity.class);
     }
 }

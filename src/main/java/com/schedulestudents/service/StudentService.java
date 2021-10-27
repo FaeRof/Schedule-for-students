@@ -32,19 +32,7 @@ public class StudentService {
         repository.save(mapper.toDbo(studentDto));
     }
 
-//    public String updateStudent(Integer id, StudentDto studentDto){
-//        List<StudentEntity> student = new ArrayList<>();
-//        for (int i =0; i<student.size(); i++){
-//            if (student.get(i).getId().equals(id)){
-//                student.get(i).setFirstName(studentDto.getFirstName());
-//                student.get(i).setLastName(studentDto.getLastName());
-//                student.get(i).setBirthDate(studentDto.getBirthDate());
-//                student.get(i).setAddress(studentDto.getAddress());
-//                student.get(i).setTelephone(studentDto.getTelephone());
-//            }
-//        }
-//
-//    }
+//    public StudentEntity updateStudent =
 
     public void deleteById(int id){
         repository.deleteById(id);
