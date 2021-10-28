@@ -3,17 +3,18 @@ package com.schedulestudents.controller;
 import com.schedulestudents.domain.dto.StudentDto;
 import com.schedulestudents.service.StudentService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/students")
-public class StudentController {
+public class StudentRestController {
 
     private final StudentService service;
 
-    public StudentController(StudentService service) {
+    public StudentRestController(StudentService service) {
         this.service = service;
     }
 

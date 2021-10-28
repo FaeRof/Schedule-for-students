@@ -1,16 +1,13 @@
 package com.schedulestudents.service;
 
-import com.schedulestudents.domain.dbo.StudentEntity;
 import com.schedulestudents.domain.dto.StudentDto;
 import com.schedulestudents.domain.mapping.StudentMapper;
 import com.schedulestudents.repository.StudentRepository;
 
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -23,9 +20,9 @@ public class StudentService {
     }
     public List<StudentDto> getAll(){
         var studentEntities = repository.findAll();
-        var student = new ArrayList<StudentDto>();
-        studentEntities.forEach(entity -> student.add(mapper.fromDbo(entity)));
-        return student;
+        var students = new ArrayList<StudentDto>();
+        studentEntities.forEach(entity -> students.add(mapper.fromDbo(entity)));
+        return students;
     }
 
     public void add(StudentDto studentDto){
