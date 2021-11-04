@@ -5,6 +5,7 @@ import com.schedulestudents.service.StudentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,8 +32,11 @@ public class StudentController {
         return ResponseEntity.ok(studentDto);
     }
 
-//    @PutMapping("edit/{id}")
-//    public StudentDto editStudent
+    @PutMapping("edit/{id}")
+    public ResponseEntity<?> editStudent(@PathVariable(value = "id") Integer id,
+                                  @Valid @RequestBody StudentDto student){
+        return service.updateStudentById(student, id);
+    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
